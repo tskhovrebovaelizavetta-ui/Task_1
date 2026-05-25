@@ -1,26 +1,23 @@
 from unittest.mock import Mock
-
+from praktikum.burger import Burger
 
 class TestBurger:
     def test_set_buns_sets_bun(self, bun):
-        from praktikum.burger import Burger
-
+        
         burger = Burger()
         burger.set_buns(bun)
 
         assert burger.bun == bun
 
     def test_add_ingredient_adds_item_to_list(self, ingredient_main):
-        from praktikum.burger import Burger
-
+        
         burger = Burger()
         burger.add_ingredient(ingredient_main)
 
         assert burger.ingredients == [ingredient_main]
 
     def test_remove_ingredient_removes_item_by_index(self, ingredient_main, ingredient_sauce):
-        from praktikum.burger import Burger
-
+        
         burger = Burger()
         burger.add_ingredient(ingredient_main)
         burger.add_ingredient(ingredient_sauce)
@@ -29,8 +26,7 @@ class TestBurger:
         assert burger.ingredients == [ingredient_sauce]
 
     def test_move_ingredient_moves_item_to_new_index(self, ingredient_main, ingredient_sauce):
-        from praktikum.burger import Burger
-
+        
         second_ingredient = Mock()
         second_ingredient.get_price.return_value = 100
         second_ingredient.get_name.return_value = 'Сыр с астероидной плесенью'
@@ -45,8 +41,7 @@ class TestBurger:
         assert burger.ingredients == [second_ingredient, ingredient_main, ingredient_sauce]
 
     def test_get_price_returns_sum_of_bun_and_ingredients_prices(self):
-        from praktikum.burger import Burger
-
+       
         bun = Mock()
         bun.get_price.return_value = 100
 
@@ -64,8 +59,7 @@ class TestBurger:
         assert burger.get_price() == 275
 
     def test_get_receipt_returns_expected_string(self):
-        from praktikum.burger import Burger
-
+        
         bun = Mock()
         bun.get_name.return_value = 'Булка'
         bun.get_price.return_value = 100
